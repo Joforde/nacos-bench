@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 
 	bench_internal "github.com/nacos-group/nacos-bench/internal"
@@ -53,5 +54,6 @@ func main() {
 		log.Fatal("PERF_MODE is required")
 	}
 
-	select {}
+	fmt.Println("性能测试程序执行完成，即将退出")
+	// select {} // 移除这个阻塞语句，让程序能够正常退出
 }
