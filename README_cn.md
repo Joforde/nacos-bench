@@ -33,3 +33,35 @@
 ```
 ./nacos-bench --nacosServerAddr=127.0.0.1 --perfMode=config --perfApi=configGet --perfTps=100 --perfTime=900 --nacosClientCount=100 --configContentLength=64 --configCount=500
 ```
+
+
+## 编译方法
+### 1. 本地编译
+```bash
+# 下载依赖
+go mod download
+
+# 编译项目
+go build -o nacos-bench cmd/main/main.go
+```
+
+### 2. 交叉编译（用于不同平台）
+```bash
+# 编译 Linux 版本
+GOOS=linux GOARCH=amd64 go build -o nacos-bench-linux cmd/main/main.go
+
+# 编译 Windows 版本
+GOOS=windows GOARCH=amd64 go build -o nacos-bench.exe cmd/main/main.go
+
+# 编译 macOS 版本
+GOOS=darwin GOARCH=amd64 go build -o nacos-bench-mac cmd/main/main.go
+```
+
+### 3. Docker 编译
+```bash
+# 构建 Docker 镜像
+docker build -t nacos-bench .
+
+# 运行容器
+docker run nacos-bench
+```
